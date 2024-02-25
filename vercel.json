@@ -1,5 +1,11 @@
 {
   "version": 2,
+  "functions": {
+    "myFunction": {
+      "memory": 512,
+      "maxDuration": 60
+    }
+  },
   "builds": [{ "src": "./index.js", "use": "@vercel/node" }],
   "routes": [
     {
