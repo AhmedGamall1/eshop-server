@@ -11,6 +11,7 @@ import paymentRouter from "./routes/payment.route.js";
 
 export const app = express();
 dotenv.config();
+const port = 8000 || process.env.PORT;
 
 //middlewares
 app.use(express.json({ limit: "50mb" })); //handle the body of post req
@@ -31,6 +32,8 @@ app.use(
   orderRouter,
   paymentRouter,
 );
-
+app.get("/", (req, res) => {
+  res.json({ message: "api is working" });
+});
 //middleware calls
 app.use(ErrorMiddleware);
