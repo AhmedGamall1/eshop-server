@@ -16,13 +16,13 @@ const port = 8000 || process.env.PORT;
 //middlewares
 app.use(express.json({ limit: "50mb" })); //handle the body of post req
 app.use(cookieParser()); //lib make me set cookies in easier way
-app.use(
-  cors({
-    origin: ["https://eshop-client-xijq.vercel.app"],
-    credentials: true,
-  }),
-  // origin: ["http://localhost:3000"],
-);
+// app.use(
+//   cors({
+//     origin: ["https://eshop-client-xijq.vercel.app"],
+//     credentials: true,
+//   }),
+// origin: ["http://localhost:3000"],
+// );
 
 //routes
 app.use(
