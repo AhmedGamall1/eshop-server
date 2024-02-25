@@ -17,9 +17,10 @@ const port = 8000 || process.env.PORT;
 app.use(express.json({ limit: "50mb" })); //handle the body of post req
 app.use(cookieParser()); //lib make me set cookies in easier way
 app.use(
-  cors({
-    origin: "https://eshop-client-wm6x.vercel.app",
-  }),
+  cors(),
+  // cors({
+  //   origin: "https://eshop-client-wm6x.vercel.app",
+  // }),
 );
 // app.use((req, res, next) => {
 //   res.header("Access-Control-Allow-Origin", "*");
