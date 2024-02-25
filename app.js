@@ -48,13 +48,13 @@ app.use(
   orderRouter,
   paymentRouter,
 );
-app.get("/", (req, res) => {
-  res.json({ message: "api is working" });
-});
-app.all("*", (req, res, next) => {
-  const err = new Error(`route is not found`);
-  err.statusCode = 404;
-  next(err);
-});
+// app.get("/", (req, res) => {
+//   res.json({ message: "api is working" });
+// });
+// app.all("*", (req, res, next) => {
+//   const err = new Error(`route is not found`);
+//   err.statusCode = 404;
+//   next(err);
+// });
 //middleware calls
 app.use(ErrorMiddleware);

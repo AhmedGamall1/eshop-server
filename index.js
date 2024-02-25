@@ -24,7 +24,7 @@ const connectDB = async () => {
 };
 
 // start the server
-app.listen(8080 || process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
   connectDB();
 });
