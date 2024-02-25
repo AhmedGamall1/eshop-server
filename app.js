@@ -16,14 +16,22 @@ const port = 8000 || process.env.PORT;
 //middlewares
 app.use(express.json({ limit: "50mb" })); //handle the body of post req
 app.use(cookieParser()); //lib make me set cookies in easier way
-app.use(
-  cors(),
-  //   {
-  //   origin: ["https://eshop-client-xijq.vercel.app"],
-  //   credentials: true,
-  // }
-  // origin: ["http://localhost:3000"],
-);
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept",
+  );
+  next();
+});
+// app.use(
+//   cors(),
+//   //   {
+//   //   origin: ["https://eshop-client-xijq.vercel.app"],
+//   //   credentials: true,
+//   // }
+//   // origin: ["http://localhost:3000"],
+// );
 
 //routes
 app.use(
@@ -36,6 +44,11 @@ app.use(
 );
 app.get("/", (req, res) => {
   res.json({ message: "api is working" });
+});
+app.all("*", (req, res, next) => {
+  const err = new Error(`route is not found`);
+  err.statusCode = 404;
+  next(err);
 });
 //middleware calls
 app.use(ErrorMiddleware);
