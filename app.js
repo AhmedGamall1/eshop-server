@@ -16,14 +16,19 @@ const port = 8000 || process.env.PORT;
 //middlewares
 app.use(express.json({ limit: "50mb" })); //handle the body of post req
 app.use(cookieParser()); //lib make me set cookies in easier way
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept",
-  );
-  next();
-});
+app.use(
+  cors({
+    origin: "https://eshop-client-wm6x.vercel.app",
+  }),
+);
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept",
+//   );
+//   next();
+// });
 // app.use(
 //   cors(),
 //   //   {
